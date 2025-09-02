@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html ondragstart="return false" onselectstart="return false">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="theme-color" content="#4285f4" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="QuickZoom 2.0" />
+		<meta property="og:description" content="일일이 찾기는 귀찮으니까." />
+		<meta property="og:image" content="/quickzoom2/images/opengraph.png" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<title>QuickZoom 2.0</title>
+		<meta charset="utf-8" />
+		<link rel="shortcut icon" href="/quickzoom2/images/quickzoom2.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/quickzoom2/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/quickzoom2/assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+			<div id="wrapper">
+					<section id="intro" class="wrapper style1 fullscreen fade-up">
+						<div class="inner" style="margin: 0px auto; overflow-x: auto;">
+							<table>
+								<thead>
+									<tr>
+										<th></th>
+										<th <% if (htday == 0) { %>
+											style="color: #fdd835;"
+										<% } %>>월</th>
+										<th <% if (htday == 1) { %>
+											style="color: #fdd835;"
+										<% } %>>화</th>
+										<th <% if (htday == 2) { %>
+											style="color: #fdd835;"
+										<% } %>>수</th>
+										<th <% if (htday == 3) { %>
+											style="color: #fdd835;"
+										<% } %>>목</th>
+										<th <% if (htday == 4) { %>
+											style="color: #fdd835;"
+										<% } %>>금</th>
+									</tr>
+								</thead>
+								<tbody>
+									<% for (var i=1; i<=7; i++) { %>
+									<tr>
+										<td style="font-weight: bold;"><%= i %></td>
+										<% for (var v=0; v<=4; v++) { %>
+										<td><a href="<%= data.links[data.timetable[i][v]] %>"
+											<% if (v == htday) { %>
+												style="color: #fdd835;"
+											<% } %> target="_blank">
+											<%= data.timetable[i][v] %></a></td>
+										<% } %>
+									</tr>
+									<% } %>
+								</tbody>
+							</table>
+							<span class="last" onclick="window.open('<%= data.links.종례 %>')">종례 접속하기</span>
+						</div>
+						<div class="action" onclick="actionToggle();">
+							<span>+</span>
+							<ul>
+								<li><a href="https://ebsoc.co.kr/" target="_blank"><img src="/quickzoom2/images/ebs.png"/>EBS 온라인클래스</a></li>
+								<li><a href="https://classroom.google.com/" target="_blank"><img src="/quickzoom2/images/googleclass.png"/>구글 클래스룸</a></li>
+								<li><a href="https://www.ealimi.com/" target="_blank"><img src="/quickzoom2/images/ealimi.png"/>E알리미</a></li>
+								<li><a href="http://ebsi.co.kr/ebs/pot/poti/main.ebs?cookieGradeVal=high2" target="_blank"><img src="/quickzoom2/images/ebs.png"/>EBSi 고교강의</a></li>
+							</ul>
+						</div>
+						<!--
+						<div class="popup">
+							<div class="contentBox">
+								<div class="popupcontent">
+									<div style="justify-content: center; text-align: center; margin: auto; align-content: center; width: 100%;">
+										<h2 style="margin-bottom: 1.5em;">서비스 종료</h2>
+										<p style="text-align: start; margin: 0 2em 0 2em">한국 표준시 2021-08-27 16:00:00 부로 서비스를 종료합니다.</p>
+										<span class="popupclose">확인</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						-->
+						<script type="text/javascript">
+							document.querySelector('.popupclose').addEventListener('click', () => {
+								document.querySelector('.popup').style.display = "none";
+							})
+						</script>
+					</section>
+					<section>
+						<div class="info">
+							<p>김성용 &copy; All rights reserved | 마지막 업데이트: <%= data.update %> KST</p>
+						</div>
+					</section>
+				</div>
+			<script type="text/javascript">
+				function actionToggle(){
+					var action = document.querySelector('.action');
+					action.classList.toggle('active');
+				}
+			</script>
+			<script src="/quickzoom2/assets/js/jquery.min.js"></script>
+			<script src="/quickzoom2/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/quickzoom2/assets/js/jquery.scrolly.min.js"></script>
+			<script src="/quickzoom2/assets/js/browser.min.js"></script>
+			<script src="/quickzoom2/assets/js/breakpoints.min.js"></script>
+			<script src="/quickzoom2/assets/js/util.js"></script>
+			<script src="/quickzoom2/assets/js/main.js"></script>
+
+	</body>
+</html>

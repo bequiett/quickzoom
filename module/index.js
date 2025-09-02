@@ -1,0 +1,1 @@
+exports.devicecheck = require("./getheader");
